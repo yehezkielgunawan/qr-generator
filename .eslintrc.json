@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["next/core-web-vitals", "yehezgun"],
+  "rules": {
+    "@next/next/no-img-element": "off",
+    "react/display-name": "off"
+  }
+}
