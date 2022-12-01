@@ -44,8 +44,8 @@
 
   .link-underline {
     color: inherit;
-    @apply underline decoration-dotted underline-offset-2;
+    @apply underline decoration-dotted underline-offset-2 hover:no-underline;
     @apply transition duration-100 ease-out;
-    @apply hover:rounded-md hover:bg-primary-200 dark:hover:bg-primary-500;
+    @apply hover:rounded-md hover:bg-primary-200 dark:hover:bg-primary-600;
   }
 }
