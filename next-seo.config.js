@@ -1,23 +1,22 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  defaultTitle: "YehezGun's Next.js + Tailwind Starter",
-  description:
-    "Yehezkiel Gunawan's personalized Next.js + Tailwind CSS + TypeScript starter template",
-  canonical: "https://yehez-nexttailwind-starter.yehezgun.com",
+  defaultTitle: "QR Generator",
+  description: "A simple web app to generate the QR Code.",
+  canonical: "https://qr.yehezgun.com",
   openGraph: {
-    url: "https://yehez-nexttailwind-starter.yehezgun.com",
-    title: "YehezGun's Next.js + Tailwind Starter",
-    description: "Next.js + Tailwind CSS + TypeScript template",
+    url: "https://qr.yehezgun.com",
+    title: "QR Generator",
+    description: "A simple web app to generate the QR Code.",
     type: "website",
     images: [
       {
-        url: "https://og-v2.yehezgun.com/api/og?title=yehez-nexttailwind-starter&desc=This%20is%20a%20Next%20JS%20(Typescript)%20+%20Tailwind%20CSS%20personalized%20template&imgUrl=https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1607554385%2Frepositories%2Fnext-js%2Fnext-logo.png&f=1&nofb=1&ipt=c85d3f1b169b29d5ebb3c9ca87303abdf1091ceed3998361dc23f329943e9728&ipo=images&siteName=nexttw-starter.yehezgun.com",
-        alt: "yehez-nexttailwind-starter.yehezgun.com og-image",
+        url: "https://og-v2.yehezgun.com/api/og?title=QR%20Generator&desc=A%20simple%20web%20app%20to%20generate%20the%20QR%20Code.&imgUrl=https://cdn-icons-png.flaticon.com/512/1233/1233055.png?w=740&t=st=1669899478~exp=1669900078~hmac=cdb7088b7f105d5383eb605a29732548b0798f2895f3f4fe06afbb0ed5a35f17&siteName=qr.yehezgun.com",
+        alt: "qr-code",
         width: 800,
         height: 600,
       },
     ],
-    site_name: "yehez-nexttailwind-starter",
+    site_name: "qr-code",
   },
   twitter: {
     handle: "@handle",
@@ -27,7 +26,7 @@ const defaultSEOConfig = {
   additionalLinkTags: [
     {
       rel: "icon",
-      href: "https://assets.vercel.com/image/upload/v1607554385/repositories/next-js/next-logo.png",
+      href: "https://cdn-icons-png.flaticon.com/512/1233/1233055.png?w=740&t=st=1669899478~exp=1669900078~hmac=cdb7088b7f105d5383eb605a29732548b0798f2895f3f4fe06afbb0ed5a35f17",
     },
   ],
 };
