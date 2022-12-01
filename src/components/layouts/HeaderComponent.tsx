@@ -15,16 +15,14 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white p-0.5 opacity-90 dark:bg-gray-700">
+    <header className="fixed top-0 z-50 w-full bg-white p-0.5 opacity-90 dark:bg-darkpurple-700">
       <div
         className={clsx(
           "flex items-center justify-between",
           "mx-auto h-14 max-w-5xl px-2 md:px-1"
         )}
       >
-        <h5 className="font-bold text-black dark:text-white">
-          yehez-nexttailwind-starter
-        </h5>
+        <h5 className="font-bold text-black dark:text-white">QR Generator</h5>
         <Button
           variant="outline"
           className={clsxm(
