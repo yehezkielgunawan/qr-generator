@@ -1,120 +1,93 @@
 import type { NextPage } from "next";
-import Image from "next/image";
-import { AiFillGithub } from "react-icons/ai";
-import { SiNetlify, SiVercel } from "react-icons/si";
+import React, { useState } from "react";
+import { QRCode } from "react-qrcode-logo";
 
-import ButtonLink from "@/components/buttons/ButtonLink";
+import Button from "@/components/buttons/Button";
 import Layout from "@/components/layouts/Layout";
-import ArrowLink from "@/components/links/ArrowLink";
 import clsxm from "@/lib/helpers/clsxm";
 
 const Home: NextPage = () => {
+  const [QRValue, setQRValue] = useState<string>("https://yehezgun.com");
+  const [QRStyle, setQRStyle] = useState<"squares" | "dots">("squares");
+  const [imageURL, setImageURL] = useState<string>("");
+  const [bgColor, setBgColor] = useState<string>("#FFFFFF");
+
+  const handleQRValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQRValue(e.target.value);
+  };
+
+  const handleQRStyleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setQRStyle(e.target.value as "squares" | "dots");
+  };
+
+  const handleImageURLChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImageURL(e.target.value);
+  };
+
+  const handleBgColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setBgColor(e.target.value);
+  };
+
   return (
     <Layout>
-      <main className="flex flex-col gap-3">
-        <h1 className="underline">Hello World!</h1>
-        <p
-          className={clsxm(
-            "bg-gray-200",
-            "dark:bg-gray-700",
-            "rounded-lg px-1 text-sm md:text-lg"
-          )}
-        >
-          This is just a starter template, made using Next.js + Typescript +
-          Tailwind CSS.
-        </p>
-        <figure className="my-4 flex content-center justify-center py-3 motion-safe:animate-bounce">
-          <Image
-            src="https://assets.vercel.com/image/upload/v1607554385/repositories/next-js/next-logo.png"
-            alt="Next.jsLogo"
-            width={120}
-            height={120}
+      <div className="flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap">
+        <div className="flex w-full flex-col gap-4">
+          <QRCode
+            id="qr-code"
+            size={220}
+            value={QRValue}
+            qrStyle={QRStyle}
+            logoImage={imageURL}
+            logoHeight={96}
+            logoWidth={96}
+            bgColor={bgColor}
           />
-        </figure>
-        <div className="my-4 content-center justify-center text-center">
-          <code
-            className={clsxm(
-              "bg-gray-200 dark:bg-gray-700",
-              "rounded-lg text-sm md:text-lg"
-            )}
-          >
-            npx degit yehezkielgunawan/yehez-nexttailwind-starter [APP_NAME]
-          </code>
-          <h3>OR</h3>
-          <code
-            className={clsxm(
-              "bg-gray-200 dark:bg-gray-700",
-              "rounded-lg text-sm md:text-lg"
-            )}
-          >
-            npx create-next-app --example
-            https://github.com/yehezkielgunawan/yehez-nexttailwind-starter
-            [YOUR_APP_NAME]
-          </code>
+          <Button className="w-60">Save QR</Button>
         </div>
-        <ButtonLink
-          href="https://github.com/yehezkielgunawan/yehez-nexttailwind-starter/generate"
-          variant="outline"
-          className={clsxm(
-            "items-center justify-center rounded-md",
-            "border-2 border-teal-700 dark:border-teal-400",
-            "text-teal-800 dark:text-teal-300",
-            "font-semibold hover:bg-teal-200 dark:hover:bg-teal-600"
-          )}
-        >
-          Use This Template
-        </ButtonLink>
-        <ArrowLink
-          as={ButtonLink}
-          direction="right"
-          href="/components"
-          variant="outline"
-          className={clsxm(
-            "items-center justify-center rounded-md border-2 shadow-md",
-            "border-gray-400 text-gray-500 dark:border-gray-300 dark:text-white",
-            "hover:bg-gray-200 dark:hover:bg-gray-500"
-          )}
-        >
-          See Components
-        </ArrowLink>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <ButtonLink
-            href="https://github.com/yehezkielgunawan/yehez-nexttailwind-starter"
-            className={clsxm(
-              "rounded-lg ",
-              "bg-gray-700",
-              "hover:bg-gray-400",
-              "border-0",
-              "gap-2"
-            )}
-          >
-            <AiFillGithub size={20} /> Open in Github
-          </ButtonLink>
-          <ButtonLink
-            href="https://vercel.com/import/git?s=https://github.com/yehezkielgunawan/yehez-nexttailwind-starter"
-            className={clsxm(
-              "rounded-lg bg-blue-600 hover:bg-blue-400",
-              "border-0",
-              "gap-2"
-            )}
-          >
-            <SiVercel size={20} />
-            Deploy To Vercel
-          </ButtonLink>
-          <ButtonLink
-            href="https://app.netlify.com/start/deploy?repository=https://github.com/yehezkielgunawan/yehez-nexttailwind-starter"
-            className={clsxm(
-              "rounded-lg bg-sky-600 hover:bg-sky-400",
-              "border-0",
-              "gap-2"
-            )}
-          >
-            <SiNetlify size={20} />
-            Deploy To Netlifly
-          </ButtonLink>
+        <div className="w-full space-y-4">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="content">Content</label>
+            <input
+              defaultValue={QRValue}
+              type="text"
+              className="text-input"
+              onChange={handleQRValueChange}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="content">Logo Image</label>
+            <input
+              type="text"
+              className={clsxm(
+                "text-input",
+                "placeholder:dark:text-darkpurple-400"
+              )}
+              placeholder="Put the QR Logo Image URL here (optional)"
+              onChange={handleImageURLChange}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="qr-style">QR Style</label>
+            <select onChange={handleQRStyleChange} className="select-input">
+              <option value="square">Square</option>
+              <option value="dots">Dots</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="qr-style">QR Color Mode</label>
+            <select
+              defaultValue="#FFFFFF"
+              onChange={handleBgColorChange}
+              className="select-input"
+            >
+              <option value="#FFFFFF">Default White</option>
+              <option value="#d1d5db">Dark Gray</option>
+              <option value="#DEF2F1">Primary Color</option>
+              <option value="#D6FFEB">Secondary Color</option>
+            </select>
+          </div>
         </div>
-      </main>
+      </div>
     </Layout>
   );
 };
