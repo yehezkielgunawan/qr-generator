@@ -33,6 +33,7 @@ const Home: NextPage = () => {
       <div className="flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap">
         <div className="flex w-full flex-col gap-4">
           <QRCode
+            id="qr-code"
             size={220}
             value={QRValue}
             qrStyle={QRStyle}
