@@ -11,7 +11,7 @@ This is just a quick mini project of a QR Generator. The live demo can be access
 - Toolings for linting, formatting, and conventions configured.
   `eslint`, `prettier`, `husky`, & `lint-staged.`
 - The ESLint config is bundled in [`eslint-config-yehezgun`](https://www.npmjs.com/package/eslint-config-yehezgun)
-- ✨Basic responsive layout configuration (using Chakra UI media query)
+- ✨Basic responsive layout configuration (through Tailwind CSS)
 - 📜Basic `standard-version` to generate Changelog, you can run `npx standard-version --skip.bump --skip.commit --skip.tag`
 - SEO Optimization (using next-SEO)
 - Now using Next.js 13 with Rust Compiler Minification enabled (you can disable it at next.config.js)
@@ -26,3 +26,4 @@ This is just a quick mini project of a QR Generator. The live demo can be access
 ## References
 
 - [Tailwind CSS Official Docs](https://tailwindcss.com/)
+- [html-to-image library](https://www.npmjs.com/package/html-to-image)
