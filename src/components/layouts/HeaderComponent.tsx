@@ -35,7 +35,11 @@ const HeaderComponent = () => {
           <ButtonLink
             href="https://github.com/yehezkielgunawan/qr-generator"
             variant="ghost"
-            className="text-darkpurple-800 hover:bg-primary-200 dark:text-darkpurple-50 dark:hover:bg-secondary-700"
+            className={clsxm(
+              "text-darkpurple-800 hover:bg-primary-200",
+              "dark:text-darkpurple-50 dark:hover:bg-secondary-700",
+              "rounded-full p-2"
+            )}
           >
             <ImGithub size={24} />
           </ButtonLink>
