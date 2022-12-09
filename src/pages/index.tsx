@@ -1,8 +1,10 @@
+import * as htmlToImage from "html-to-image";
 import type { NextPage } from "next";
 import React, { useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 
 import Button from "@/components/buttons/Button";
+import InputField from "@/components/forms/InputField";
 import Layout from "@/components/layouts/Layout";
 import clsxm from "@/lib/helpers/clsxm";
 
@@ -11,6 +13,8 @@ const Home: NextPage = () => {
   const [QRStyle, setQRStyle] = useState<"squares" | "dots">("squares");
   const [imageURL, setImageURL] = useState<string>("");
   const [bgColor, setBgColor] = useState<string>("#FFFFFF");
+  const [logoWidth, setLogoWidth] = useState<number>(100);
+  const [logoHeight, setLogoHeight] = useState<number>(100);
 
   const handleQRValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQRValue(e.target.value);
@@ -18,6 +22,14 @@ const Home: NextPage = () => {
 
   const handleQRStyleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setQRStyle(e.target.value as "squares" | "dots");
+  };
+
+  const handleLogoWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogoWidth(Number(e.target.value));
+  };
+
+  const handleLogoHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogoHeight(Number(e.target.value));
   };
 
   const handleImageURLChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,42 +40,67 @@ const Home: NextPage = () => {
     setBgColor(e.target.value);
   };
 
+  const handleDownload = () => {
+    htmlToImage.toJpeg(document.getElementById("qr-code")!).then((dataUrl) => {
+      const link = document.createElement("a");
+      link.download = "image.jpeg";
+      link.href = dataUrl;
+      link.click();
+    });
+  };
+
   return (
     <Layout>
-      <div className="flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap">
-        <div className="flex w-full flex-col gap-4">
+      <div
+        className={clsxm(
+          "flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap"
+        )}
+      >
+        <div className="flex w-full flex-col items-center gap-4 lg:items-start">
           <QRCode
             id="qr-code"
             size={220}
             value={QRValue}
             qrStyle={QRStyle}
             logoImage={imageURL}
-            logoHeight={96}
-            logoWidth={96}
+            logoHeight={logoHeight}
+            logoWidth={logoWidth}
             bgColor={bgColor}
+            logoOpacity={0.85}
           />
-          <Button className="w-60">Save QR</Button>
+          <Button className="w-60" onClick={handleDownload}>
+            Save QR
+          </Button>
         </div>
         <div className="w-full space-y-4">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="content">Content</label>
-            <input
-              defaultValue={QRValue}
-              type="text"
-              className="text-input"
-              onChange={handleQRValueChange}
+          <InputField
+            labelName="Content"
+            autoFocus
+            defaultValue={QRValue}
+            type="text"
+            onChange={handleQRValueChange}
+            placeholder="Input the URL String here"
+          />
+          <InputField
+            labelName="Logo Image URL"
+            type="text"
+            placeholder="Put the QR Logo Image URL here (optional)"
+            onChange={handleImageURLChange}
+          />
+          <div className="flex items-center gap-4">
+            <InputField
+              labelName="Logo Image Width (Opt)"
+              defaultValue={logoWidth}
+              type="number"
+              placeholder="Logo Image Width"
+              onChange={handleLogoWidthChange}
             />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="content">Logo Image</label>
-            <input
-              type="text"
-              className={clsxm(
-                "text-input",
-                "placeholder:dark:text-darkpurple-400"
-              )}
-              placeholder="Put the QR Logo Image URL here (optional)"
-              onChange={handleImageURLChange}
+            <InputField
+              labelName="Logo Image Height (Opt)"
+              defaultValue={logoHeight}
+              type="number"
+              placeholder="Logo Image Height"
+              onChange={handleLogoHeightChange}
             />
           </div>
           <div className="flex flex-col gap-2">
