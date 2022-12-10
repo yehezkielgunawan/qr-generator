@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.3 (2022-12-10)
+
+### Features
+
+- **global.css:** :lipstick: setup css utility class ([38d047f](https://github.com/yehezkielgunawan/qr-generator/commit/38d047f17f8cd4b7d52bb7273b3b7320654f4146))
+- **home page:** :sparkles: add download feature ([aa27668](https://github.com/yehezkielgunawan/qr-generator/commit/aa2766806cbc2dc3d21b75a6032387aa25e68ffe))
+- **home page:** :sparkles: base layouting and functionality (exclude download QR feature ([d79258f](https://github.com/yehezkielgunawan/qr-generator/commit/d79258f3420865e29f575de9ca7afe2fb8d78ad2))
+- **InputField:** :sparkles: create reusable input text field ([8644820](https://github.com/yehezkielgunawan/qr-generator/commit/8644820810bbdbfc979957e9036c6420c1c72f3a))
+
+### Bug Fixes
+
+- **HeaderComponent and global.css:** :bug: adjust existing styling ([12416bb](https://github.com/yehezkielgunawan/qr-generator/commit/12416bbb678c912d9f64cd435e72a9f1992b0d95))
+- **HeaderComponent:** :lipstick: quick edit Github repo link style ([f206862](https://github.com/yehezkielgunawan/qr-generator/commit/f206862dc34cb041da7bb01c510e724af9cd23ad))
+- **next-seo.config:** :bug: quick adjust SEO Image Preview ([f5f536c](https://github.com/yehezkielgunawan/qr-generator/commit/f5f536cf0d5a1570ed310234e18e2e8e42802629))
+
 ### [0.0.3](https://github.com/yehezkielgunawan/yehez-nexttailwind-starter/compare/v0.0.2...v0.0.3) (2022-03-31)
 
 ### Bug Fixes
