@@ -39,7 +39,7 @@
   }
 
   .layout-container {
-    @apply mx-auto max-w-2xl px-2 pt-20 md:px-1;
+    @apply mx-auto max-w-3xl px-2 pt-20 md:px-1;
   }
 
   .link-underline {

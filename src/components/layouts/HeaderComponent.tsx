@@ -27,7 +27,7 @@ const HeaderComponent = () => {
       <div
         className={clsx(
           "flex items-center justify-between",
-          "mx-auto h-14 max-w-2xl px-2 md:px-1"
+          "mx-auto h-14 max-w-3xl px-2 md:px-1"
         )}
       >
         <h5 className="font-bold text-black dark:text-white">QR Generator</h5>
