@@ -1,7 +1,7 @@
 {
   "name": "qr-generator",
   "private": true,
-  "version": "0.0.3",
+  "version": "1.0.0",
   "scripts": {
     "clean": "rm -rf .next coverage node_modules tsconfig.tsbuildinfo",
     "dev": "next dev",
