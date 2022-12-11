@@ -81,7 +81,7 @@ const Home: NextPage = () => {
               bgColor={bgColor}
               logoOpacity={0.85}
             />
-            <p className="w-60 break-words bg-white text-darkpurple-300">
+            <p className="w-60 break-words bg-white text-center text-darkpurple-300">
               {QRValue}
             </p>
           </div>
