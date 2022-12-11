@@ -22,6 +22,8 @@ This is just a quick mini project of a QR Generator. The live demo can be access
 - Write the string or url that you want to generate as QR Code
 - You can select the QR Code style
 - If you want it, you also can download the QR Code
+- You also can generate the QR Code by passing the query param using `qr_value`, for example `https://qr.yehezgun.com?qr_value=https://google.com`, the default QR Value will be changed to `https://google.com`
+- It's better to use the link shortener to shorten the QR Value url if the QR Value input is more than 30 characters.
 
 ## References
 
