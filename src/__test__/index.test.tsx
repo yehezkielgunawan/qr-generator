@@ -5,8 +5,18 @@ import NotFoundPage from "@/pages/404";
 
 import "@testing-library/jest-dom";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const mockUseRouter = jest.spyOn(require("next/router"), "useRouter");
+mockUseRouter.mockImplementation(() => ({
+  query: { qr_value: "12345" },
+}));
+
 jest.mock("react-qrcode-logo", () => ({
   QRCode: jest.fn(),
+}));
+
+jest.mock("next/router", () => ({
+  useRouter: () => mockUseRouter,
 }));
 
 test("Renders Home Page Successfully", () => {

@@ -1,14 +1,20 @@
 import * as htmlToImage from "html-to-image";
 import type { NextPage } from "next";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 
 import Button from "@/components/buttons/Button";
 import InputField from "@/components/forms/InputField";
+import SelectForm from "@/components/forms/SelectForm";
 import Layout from "@/components/layouts/Layout";
+import UnderlineLink from "@/components/links/UnderlineLink";
+import { colorOptions, QRStyleOptions } from "@/lib/constants/baseConstants";
 import clsxm from "@/lib/helpers/clsxm";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const { qr_value } = router.query;
   const [QRValue, setQRValue] = useState<string>("https://yehezgun.com");
   const [QRStyle, setQRStyle] = useState<"squares" | "dots">("squares");
   const [imageURL, setImageURL] = useState<string>("");
@@ -41,13 +47,19 @@ const Home: NextPage = () => {
   };
 
   const handleDownload = () => {
-    htmlToImage.toJpeg(document.getElementById("qr-code")!).then((dataUrl) => {
-      const link = document.createElement("a");
-      link.download = "image.jpeg";
-      link.href = dataUrl;
-      link.click();
-    });
+    htmlToImage
+      .toJpeg(document.getElementById("qr-code-wrapper")!)
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "image.jpeg";
+        link.href = dataUrl;
+        link.click();
+      });
   };
+
+  useEffect(() => {
+    qr_value && setQRValue(qr_value as string);
+  }, [qr_value]);
 
   return (
     <Layout>
@@ -57,30 +69,51 @@ const Home: NextPage = () => {
         )}
       >
         <div className="flex w-full flex-col items-center gap-4 lg:items-start">
-          <QRCode
-            id="qr-code"
-            size={220}
-            value={QRValue}
-            qrStyle={QRStyle}
-            logoImage={imageURL}
-            logoHeight={logoHeight}
-            logoWidth={logoWidth}
-            bgColor={bgColor}
-            logoOpacity={0.85}
-          />
+          <div id="qr-code-wrapper">
+            <QRCode
+              id="qr-code"
+              size={220}
+              value={QRValue}
+              qrStyle={QRStyle}
+              logoImage={imageURL}
+              logoHeight={logoHeight}
+              logoWidth={logoWidth}
+              bgColor={bgColor}
+              logoOpacity={0.85}
+            />
+            <p className="w-60 break-words bg-white text-darkpurple-300">
+              {QRValue}
+            </p>
+          </div>
           <Button className="w-60" onClick={handleDownload}>
             Save QR
           </Button>
         </div>
         <div className="w-full space-y-4">
-          <InputField
-            labelName="Content"
-            autoFocus
-            defaultValue={QRValue}
-            type="text"
-            onChange={handleQRValueChange}
-            placeholder="Input the URL String here"
-          />
+          <div className="space-y-1">
+            <InputField
+              labelName="Content"
+              autoFocus
+              defaultValue={QRValue}
+              type="text"
+              onChange={handleQRValueChange}
+              placeholder="Input the URL String here"
+            />
+            {QRValue.length > 30 && (
+              <div className="text-rose-500">
+                <p>
+                  Better use{" "}
+                  <UnderlineLink
+                    href="https://shortin.yehezgun.com"
+                    className="hover:bg-rose-100 dark:hover:bg-rose-50"
+                  >
+                    link shortener
+                  </UnderlineLink>
+                  , the URL content is too long.
+                </p>
+              </div>
+            )}
+          </div>
           <InputField
             labelName="Logo Image URL"
             type="text"
@@ -103,26 +136,20 @@ const Home: NextPage = () => {
               onChange={handleLogoHeightChange}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="qr-style">QR Style</label>
-            <select onChange={handleQRStyleChange} className="select-input">
-              <option value="square">Square</option>
-              <option value="dots">Dots</option>
-            </select>
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="qr-style">QR Color Mode</label>
-            <select
-              defaultValue="#FFFFFF"
-              onChange={handleBgColorChange}
-              className="select-input"
-            >
-              <option value="#FFFFFF">Default White</option>
-              <option value="#d1d5db">Dark Gray</option>
-              <option value="#DEF2F1">Primary Color</option>
-              <option value="#D6FFEB">Secondary Color</option>
-            </select>
-          </div>
+          <SelectForm
+            labelName="QR Style"
+            selectOptions={QRStyleOptions}
+            onChange={handleQRStyleChange}
+            defaultValue={QRStyle}
+            labelHTMLFor="qr-style"
+          />
+          <SelectForm
+            labelName="QR Color Mode"
+            labelHTMLFor="qr-color-mode"
+            selectOptions={colorOptions}
+            onChange={handleBgColorChange}
+            defaultValue="#FFFFFF"
+          />
         </div>
       </div>
     </Layout>
