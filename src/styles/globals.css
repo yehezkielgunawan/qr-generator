@@ -59,4 +59,9 @@
     @apply focus:border-primary-500 focus:outline-none focus:ring-primary-500;
     @apply rounded-md dark:bg-darkpurple-600 placeholder:dark:text-darkpurple-300;
   }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @apply h-4 w-4 appearance-none rounded-full bg-darkpurple-300 dark:bg-darkpurple-100;
+    @apply shadow-[-405px_0px_0px_400px] shadow-darkpurple-300 dark:shadow-[-405px_0px_0px_400px] dark:shadow-darkpurple-100;
+  }
 }
