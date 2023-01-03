@@ -1,7 +1,7 @@
 import * as htmlToImage from "html-to-image";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 
 import Button from "@/components/buttons/Button";
@@ -21,30 +21,56 @@ const Home: NextPage = () => {
   const [bgColor, setBgColor] = useState<string>("#FFFFFF");
   const [logoWidth, setLogoWidth] = useState<number>(100);
   const [logoHeight, setLogoHeight] = useState<number>(100);
+  const [QROpacity, setQROpacity] = useState<number>(80);
 
-  const handleQRValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQRValue(e.target.value);
-  };
+  const handleQRValueChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setQRValue(e.target.value);
+    },
+    []
+  );
 
-  const handleQRStyleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setQRStyle(e.target.value as "squares" | "dots");
-  };
+  const handleQRStyleChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setQRStyle(e.target.value as "squares" | "dots");
+    },
+    []
+  );
 
-  const handleLogoWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLogoWidth(Number(e.target.value));
-  };
+  const handleLogoWidthChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setLogoWidth(Number(e.target.value));
+    },
+    []
+  );
 
-  const handleLogoHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLogoHeight(Number(e.target.value));
-  };
+  const handleLogoHeightChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setLogoHeight(Number(e.target.value));
+    },
+    []
+  );
 
-  const handleImageURLChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImageURL(e.target.value);
-  };
+  const handleImageURLChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setImageURL(e.target.value);
+    },
+    []
+  );
 
-  const handleBgColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setBgColor(e.target.value);
-  };
+  const handleBgColorChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setBgColor(e.target.value);
+    },
+    []
+  );
+
+  const handleQROpacityChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setQROpacity(Number(e.target.value));
+    },
+    []
+  );
 
   const handleDownload = () => {
     htmlToImage
@@ -79,7 +105,7 @@ const Home: NextPage = () => {
               logoHeight={logoHeight}
               logoWidth={logoWidth}
               bgColor={bgColor}
-              logoOpacity={0.85}
+              logoOpacity={parseFloat((QROpacity / 100).toFixed(2))}
             />
             <p className="w-60 break-words bg-white text-center text-darkpurple-300">
               {QRValue}
@@ -119,6 +145,16 @@ const Home: NextPage = () => {
             type="text"
             placeholder="Put the QR Logo Image URL here (optional)"
             onChange={handleImageURLChange}
+          />
+          <InputField
+            labelName="Logo Image Opacity (if any)"
+            type="range"
+            onChange={handleQROpacityChange}
+            value={QROpacity}
+            min={0}
+            max={100}
+            className="appearance-none overflow-hidden bg-darkpurple-100 dark:bg-darkpurple-600"
+            // class="rounded-lg overflow-hidden appearance-none bg-gray-400"
           />
           <div className="flex items-center gap-4">
             <InputField
