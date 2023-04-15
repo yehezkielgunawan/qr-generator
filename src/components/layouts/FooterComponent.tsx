@@ -12,7 +12,7 @@ const FooterComponent = () => {
     <footer
       className={clsxm(
         "mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-2 md:justify-between",
-        "py-16 px-2 md:px-1"
+        "px-2 py-16 md:px-1"
       )}
     >
       <div className="flex items-center gap-4">
