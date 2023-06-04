@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/yehezkielgunawan/qr-generator/compare/v1.0.0...v1.1.0) (2023-05-05)
+
+
+### Features
+
+* **main page:** :sparkles: add opacity input form (range) ([4a51927](https://github.com/yehezkielgunawan/qr-generator/commit/4a51927898fb3ed08670c1bda0f08c44378482cd))
+
+
+### Bug Fixes
+
+* **_document:** :lipstick: fix dark mode bg issue ([a2bb870](https://github.com/yehezkielgunawan/qr-generator/commit/a2bb870fec10efcf4095a13149379de149f9ac43))
+* **dependabot.yaml:** :ambulance: use npm ([309de6d](https://github.com/yehezkielgunawan/qr-generator/commit/309de6d173368c0b22d36ddb7057c6f72dd0cbf1))
+
 ## [1.0.0](https://github.com/yehezkielgunawan/qr-generator/compare/v0.0.3...v1.0.0) (2022-12-11)
 
 ### 0.0.3 (2022-12-10)
