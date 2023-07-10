@@ -16,7 +16,7 @@
     "test:ci": "jest --ci --collect-coverage --verbose"
   },
   "dependencies": {
-    "@fontsource/catamaran": "^4.5.10",
+    "@fontsource/catamaran": "^5.0.5",
     "@tailwindcss/forms": "^0.5.3",
     "clsx": "^1.2.1",
     "html-to-image": "^1.11.11",
