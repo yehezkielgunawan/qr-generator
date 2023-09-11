@@ -550,10 +550,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.39.0.tgz#58b536bcc843f4cd1e02a7e6171da5c040f4d44b"
   integrity sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==
 
-"@fontsource/catamaran@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/catamaran/-/catamaran-4.5.10.tgz#ae67dde02fcf4fbf304f4fd5c9a9c42bf38be39d"
-  integrity sha512-Z6+CzgAg1/UInHwRAWIzbSSS2r/20gXF6bmsbouHR7jJs8Mglr4K685RneJZc1VSFpmo9b8fDhhL5eGHGgQfPQ==
+"@fontsource/catamaran@^5.0.12":
+  version "5.0.12"
+  resolved "https://registry.yarnpkg.com/@fontsource/catamaran/-/catamaran-5.0.12.tgz#1b09ed1d6b761100c19f036aaf488db54ed8ff11"
+  integrity sha512-5+ce/dSEkZIkctC2zOjWnXzrNobr8PipfP0dtK7IbOZF8MKMf7yDp2rgrK+bhEeXZ5Kvtj31J6K4Ne368pxhng==
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
