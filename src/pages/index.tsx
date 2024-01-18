@@ -12,6 +12,10 @@ import UnderlineLink from "@/components/links/UnderlineLink";
 import { colorOptions, QRStyleOptions } from "@/lib/constants/baseConstants";
 import clsxm from "@/lib/helpers/clsxm";
 
+export const config = {
+  runtime: "experimental-edge",
+};
+
 const Home: NextPage = () => {
   const router = useRouter();
   const { qr_value } = router.query;
