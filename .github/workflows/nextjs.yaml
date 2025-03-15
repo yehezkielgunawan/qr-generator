@@ -21,11 +21,13 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run Prettier
-        run: yarn prettier:ci
-
-      - name: Run ESLint
-        run: yarn lint
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      
+      - name: Run Biome
+        run: yarn lint src/
 
       - name: Run TypeScript
         run: yarn typescript:ci
