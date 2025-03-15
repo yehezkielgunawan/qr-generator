@@ -12,6 +12,7 @@
     "release": "standard-version",
     "test": "jest",
     "biome:format": "biome format --write src/",
+    "biome:lint": "biome lint --write src/",
     "prettier:ci": "prettier --check ./**/*.{ts,tsx}",
     "typescript:ci": "tsc --noEmit",
     "test:ci": "jest --ci --collect-coverage --verbose"
