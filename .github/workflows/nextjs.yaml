@@ -27,7 +27,7 @@ jobs:
           version: latest
       
       - name: Run Biome
-        run: yarn biome:lint
+        run: yarn biome:lint:ci
 
       - name: Run TypeScript
         run: yarn typescript:ci
