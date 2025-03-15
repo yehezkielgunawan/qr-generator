@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import React from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
 import { ImGithub } from "react-icons/im";
 

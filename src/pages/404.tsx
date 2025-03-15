@@ -1,4 +1,4 @@
-import React from "react";
+
 import { RiAlarmWarningLine } from "react-icons/ri";
 
 import ArrowLink from "@/components/links/ArrowLink";
