@@ -8,18 +8,18 @@ import "@fontsource/catamaran";
 import defaultSEOConfig from "../../next-seo.config";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-      <Head>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-        />
-      </Head>
-      <DefaultSeo {...defaultSEOConfig} />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+			<Head>
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+				/>
+			</Head>
+			<DefaultSeo {...defaultSEOConfig} />
+			<Component {...pageProps} />
+		</ThemeProvider>
+	);
 }
 
 export default MyApp;
