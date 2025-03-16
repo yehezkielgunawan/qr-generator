@@ -35,8 +35,9 @@
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-conventional": "^15.0.0",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^18.14.0",
     "@types/react": "^18.0.28",
     "autoprefixer": "^10.4.4",
@@ -62,5 +63,5 @@
       "prettier --write src/"
     ]
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
 }

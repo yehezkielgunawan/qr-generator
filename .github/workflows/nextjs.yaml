@@ -11,15 +11,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
@@ -27,13 +32,13 @@ jobs:
           version: latest
       
       - name: Run Biome
-        run: yarn biome:lint:ci
+        run: pnpm biome:lint:ci
 
       - name: Run TypeScript
-        run: yarn typescript:ci
+        run: pnpm typescript:ci
 
       - name: Run unit tests in CI environment
-        run: yarn test:ci
+        run: pnpm test:ci
 
       - name: Build the application
-        run: yarn build
+        run: pnpm build
