@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
-  images: {
-    domains: ["assets.vercel.com"],
-  },
-  swcMinify: true,
-  eslint: {
-    dirs: ["src"],
-  },
+	reactStrictMode: true,
+	images: {
+		domains: ["assets.vercel.com"],
+	},
+	eslint: {
+		dirs: ["src"],
+	},
 };
