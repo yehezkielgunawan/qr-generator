@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "standard-version",
     "test": "jest",
     "biome:format": "biome format --write src/",
