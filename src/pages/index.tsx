@@ -13,183 +13,183 @@ import { colorOptions, QRStyleOptions } from "@/lib/constants/baseConstants";
 import clsxm from "@/lib/helpers/clsxm";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-  const { qr_value } = router.query;
-  const [QRValue, setQRValue] = useState<string>("https://yehezgun.com");
-  const [QRStyle, setQRStyle] = useState<"squares" | "dots">("squares");
-  const [imageURL, setImageURL] = useState<string>("");
-  const [bgColor, setBgColor] = useState<string>("#FFFFFF");
-  const [logoWidth, setLogoWidth] = useState<number>(100);
-  const [logoHeight, setLogoHeight] = useState<number>(100);
-  const [QROpacity, setQROpacity] = useState<number>(80);
+	const router = useRouter();
+	const { qr_value } = router.query;
+	const [QRValue, setQRValue] = useState<string>("https://yehezgun.com");
+	const [QRStyle, setQRStyle] = useState<"squares" | "dots">("squares");
+	const [imageURL, setImageURL] = useState<string>("");
+	const [bgColor, setBgColor] = useState<string>("#FFFFFF");
+	const [logoWidth, setLogoWidth] = useState<number>(100);
+	const [logoHeight, setLogoHeight] = useState<number>(100);
+	const [QROpacity, setQROpacity] = useState<number>(80);
 
-  const handleQRValueChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setQRValue(e.target.value);
-    },
-    []
-  );
+	const handleQRValueChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setQRValue(e.target.value);
+		},
+		[],
+	);
 
-  const handleQRStyleChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setQRStyle(e.target.value as "squares" | "dots");
-    },
-    []
-  );
+	const handleQRStyleChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			setQRStyle(e.target.value as "squares" | "dots");
+		},
+		[],
+	);
 
-  const handleLogoWidthChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setLogoWidth(Number(e.target.value));
-    },
-    []
-  );
+	const handleLogoWidthChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setLogoWidth(Number(e.target.value));
+		},
+		[],
+	);
 
-  const handleLogoHeightChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setLogoHeight(Number(e.target.value));
-    },
-    []
-  );
+	const handleLogoHeightChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setLogoHeight(Number(e.target.value));
+		},
+		[],
+	);
 
-  const handleImageURLChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setImageURL(e.target.value);
-    },
-    []
-  );
+	const handleImageURLChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setImageURL(e.target.value);
+		},
+		[],
+	);
 
-  const handleBgColorChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setBgColor(e.target.value);
-    },
-    []
-  );
+	const handleBgColorChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			setBgColor(e.target.value);
+		},
+		[],
+	);
 
-  const handleQROpacityChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setQROpacity(Number(e.target.value));
-    },
-    []
-  );
+	const handleQROpacityChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setQROpacity(Number(e.target.value));
+		},
+		[],
+	);
 
-  const handleDownload = () => {
-    htmlToImage
-      .toJpeg(document.getElementById("qr-code-wrapper")!)
-      .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = "image.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
-  };
+	const handleDownload = () => {
+		htmlToImage
+			.toJpeg(document.getElementById("qr-code-wrapper")!)
+			.then((dataUrl) => {
+				const link = document.createElement("a");
+				link.download = "image.jpeg";
+				link.href = dataUrl;
+				link.click();
+			});
+	};
 
-  useEffect(() => {
-    qr_value && setQRValue(qr_value as string);
-  }, [qr_value]);
+	useEffect(() => {
+		qr_value && setQRValue(qr_value as string);
+	}, [qr_value]);
 
-  return (
-    <Layout>
-      <div
-        className={clsxm(
-          "flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap"
-        )}
-      >
-        <div className="flex w-full flex-col items-center gap-4 lg:items-start">
-          <div id="qr-code-wrapper">
-            <QRCode
-              id="qr-code"
-              size={220}
-              value={QRValue}
-              qrStyle={QRStyle}
-              logoImage={imageURL}
-              logoHeight={logoHeight}
-              logoWidth={logoWidth}
-              bgColor={bgColor}
-              logoOpacity={parseFloat((QROpacity / 100).toFixed(2))}
-            />
-            <p className="w-60 break-words bg-white text-center text-darkpurple-300">
-              {QRValue}
-            </p>
-          </div>
-          <Button className="w-60" onClick={handleDownload}>
-            Save QR
-          </Button>
-        </div>
-        <div className="w-full space-y-4">
-          <div className="space-y-1">
-            <InputField
-              labelName="Content"
-              autoFocus
-              defaultValue={QRValue}
-              type="text"
-              onChange={handleQRValueChange}
-              placeholder="Input the URL String here"
-            />
-            {QRValue.length > 30 && (
-              <div className="text-rose-500">
-                <p>
-                  Better use{" "}
-                  <UnderlineLink
-                    href="https://shortin.yehezgun.com"
-                    className="hover:bg-rose-100 dark:hover:bg-rose-50"
-                  >
-                    link shortener
-                  </UnderlineLink>
-                  , the URL content is too long.
-                </p>
-              </div>
-            )}
-          </div>
-          <InputField
-            labelName="Logo Image URL"
-            type="text"
-            placeholder="Put the QR Logo Image URL here (optional)"
-            onChange={handleImageURLChange}
-          />
-          <InputField
-            labelName="Logo Image Opacity (if any)"
-            type="range"
-            onChange={handleQROpacityChange}
-            value={QROpacity}
-            min={0}
-            max={100}
-            className="appearance-none overflow-hidden bg-darkpurple-100 dark:bg-darkpurple-600"
-            // class="rounded-lg overflow-hidden appearance-none bg-gray-400"
-          />
-          <div className="flex items-center gap-4">
-            <InputField
-              labelName="Logo Image Width (Opt)"
-              defaultValue={logoWidth}
-              type="number"
-              placeholder="Logo Image Width"
-              onChange={handleLogoWidthChange}
-            />
-            <InputField
-              labelName="Logo Image Height (Opt)"
-              defaultValue={logoHeight}
-              type="number"
-              placeholder="Logo Image Height"
-              onChange={handleLogoHeightChange}
-            />
-          </div>
-          <SelectForm
-            labelName="QR Style"
-            selectOptions={QRStyleOptions}
-            onChange={handleQRStyleChange}
-            defaultValue={QRStyle}
-            labelHTMLFor="qr-style"
-          />
-          <SelectForm
-            labelName="QR Color Mode"
-            labelHTMLFor="qr-color-mode"
-            selectOptions={colorOptions}
-            onChange={handleBgColorChange}
-            defaultValue="#FFFFFF"
-          />
-        </div>
-      </div>
-    </Layout>
-  );
+	return (
+		<Layout>
+			<div
+				className={clsxm(
+					"flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap",
+				)}
+			>
+				<div className="flex w-full flex-col items-center gap-4 lg:items-start">
+					<div id="qr-code-wrapper">
+						<QRCode
+							id="qr-code"
+							size={220}
+							value={QRValue}
+							qrStyle={QRStyle}
+							logoImage={imageURL}
+							logoHeight={logoHeight}
+							logoWidth={logoWidth}
+							bgColor={bgColor}
+							logoOpacity={parseFloat((QROpacity / 100).toFixed(2))}
+						/>
+						<p className="w-60 break-words bg-white text-center text-darkpurple-300">
+							{QRValue}
+						</p>
+					</div>
+					<Button className="w-60" onClick={handleDownload}>
+						Save QR
+					</Button>
+				</div>
+				<div className="w-full space-y-4">
+					<div className="space-y-1">
+						<InputField
+							labelName="Content"
+							autoFocus
+							defaultValue={QRValue}
+							type="text"
+							onChange={handleQRValueChange}
+							placeholder="Input the URL String here"
+						/>
+						{QRValue.length > 30 && (
+							<div className="text-rose-500">
+								<p>
+									Better use{" "}
+									<UnderlineLink
+										href="https://shortin.yehezgun.com"
+										className="hover:bg-rose-100 dark:hover:bg-rose-50"
+									>
+										link shortener
+									</UnderlineLink>
+									, the URL content is too long.
+								</p>
+							</div>
+						)}
+					</div>
+					<InputField
+						labelName="Logo Image URL"
+						type="text"
+						placeholder="Put the QR Logo Image URL here (optional)"
+						onChange={handleImageURLChange}
+					/>
+					<InputField
+						labelName="Logo Image Opacity (if any)"
+						type="range"
+						onChange={handleQROpacityChange}
+						value={QROpacity}
+						min={0}
+						max={100}
+						className="appearance-none overflow-hidden bg-darkpurple-100 dark:bg-darkpurple-600"
+						// class="rounded-lg overflow-hidden appearance-none bg-gray-400"
+					/>
+					<div className="flex items-center gap-4">
+						<InputField
+							labelName="Logo Image Width (Opt)"
+							defaultValue={logoWidth}
+							type="number"
+							placeholder="Logo Image Width"
+							onChange={handleLogoWidthChange}
+						/>
+						<InputField
+							labelName="Logo Image Height (Opt)"
+							defaultValue={logoHeight}
+							type="number"
+							placeholder="Logo Image Height"
+							onChange={handleLogoHeightChange}
+						/>
+					</div>
+					<SelectForm
+						labelName="QR Style"
+						selectOptions={QRStyleOptions}
+						onChange={handleQRStyleChange}
+						defaultValue={QRStyle}
+						labelHTMLFor="qr-style"
+					/>
+					<SelectForm
+						labelName="QR Color Mode"
+						labelHTMLFor="qr-color-mode"
+						selectOptions={colorOptions}
+						onChange={handleBgColorChange}
+						defaultValue="#FFFFFF"
+					/>
+				</div>
+			</div>
+		</Layout>
+	);
 };
 
 export default Home;

@@ -19,7 +19,7 @@ const HeaderComponent = () => {
     <header
       className={clsxm(
         "fixed top-0 z-50 w-full bg-white/10 p-0.5",
-        "shadow-xs shadow-darkpurple-50 backdrop-blur-md",
+        "shadow-darkpurple-50 shadow-xs backdrop-blur-md",
         "dark:bg-darkpurple-700/10 dark:shadow-darkpurple-700"
       )}
     >
