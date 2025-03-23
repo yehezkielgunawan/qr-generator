@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/yehezkielgunawan/qr-generator/compare/v1.1.0...v1.2.0) (2025-03-23)
+
+
+### Features
+
+* add biome configuration and integrate formatting command ([3987fd2](https://github.com/yehezkielgunawan/qr-generator/commit/3987fd2ceb5a0aa29efacd2efc7106ba12101eee))
+* add biome lint command to package.json for improved code quality ([96e51aa](https://github.com/yehezkielgunawan/qr-generator/commit/96e51aa67d283f0a01d5516d1acaa47fd909feb8))
+* add CI-specific lint command for Biome in package.json and update workflow ([572d200](https://github.com/yehezkielgunawan/qr-generator/commit/572d20019d312dd1b1025a45234bf5edf2b724fc))
+* **deps:** add biome CLI dependencies for version 1.9.4 ([2cf9b67](https://github.com/yehezkielgunawan/qr-generator/commit/2cf9b67ca51681c629723009e8a26cd8f6612b05))
+* replace ESLint and Prettier with Biome in GitHub Actions workflow ([3377baf](https://github.com/yehezkielgunawan/qr-generator/commit/3377baf07dedb8bed9e3d6b708daa70d14ae8774))
+* update GitHub Actions workflow to use biome lint command ([928fdfb](https://github.com/yehezkielgunawan/qr-generator/commit/928fdfba9cf92e85cf3327f7a9b1464f7c4812da))
+
+
+### Bug Fixes
+
+* **deps:** update @tailwindcss/forms, @commitlint/cli, jest, postcss, and typescript to specific versions ([3f9c9bf](https://github.com/yehezkielgunawan/qr-generator/commit/3f9c9bf9fb7ad60a0fb93dc502cdabe5d9470cec))
+* **deps:** update html-to-image, react-icons, react-qrcode-logo, jest-environment-jsdom, prettier-plugin-tailwindcss to specific versions ([30e12d7](https://github.com/yehezkielgunawan/qr-generator/commit/30e12d736bc1cdf0a6d53aa9caeb9a9968e53dae))
+* update GitHub Actions to use Node.js 20 and latest action versions ([be421a9](https://github.com/yehezkielgunawan/qr-generator/commit/be421a9af6cde3dd57b8b11e7071c7722590a175))
+
 ## [1.1.0](https://github.com/yehezkielgunawan/qr-generator/compare/v1.0.0...v1.1.0) (2023-05-05)
 
 
