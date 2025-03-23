@@ -5,41 +5,41 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-primary: Catamaran, ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-primary: Catamaran, ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --color-primary-50: #f0f9f9;
-  --color-primary-100: #def2f1;
-  --color-primary-200: #c0e7e5;
-  --color-primary-300: #9fdbd8;
-  --color-primary-400: #7ececa;
-  --color-primary-500: #5ec2bd;
-  --color-primary-600: #3fa6a1;
-  --color-primary-700: #307e7a;
-  --color-primary-800: #205552;
-  --color-primary-900: #0f2927;
+	--color-primary-50: #f0f9f9;
+	--color-primary-100: #def2f1;
+	--color-primary-200: #c0e7e5;
+	--color-primary-300: #9fdbd8;
+	--color-primary-400: #7ececa;
+	--color-primary-500: #5ec2bd;
+	--color-primary-600: #3fa6a1;
+	--color-primary-700: #307e7a;
+	--color-primary-800: #205552;
+	--color-primary-900: #0f2927;
 
-  --color-secondary-50: #d6ffeb;
-  --color-secondary-100: #a8ffd5;
-  --color-secondary-200: #52ffab;
-  --color-secondary-300: #00ff84;
-  --color-secondary-400: #00a857;
-  --color-secondary-500: #00522b;
-  --color-secondary-600: #004222;
-  --color-secondary-700: #00331a;
-  --color-secondary-800: #001f10;
-  --color-secondary-900: #000f08;
+	--color-secondary-50: #d6ffeb;
+	--color-secondary-100: #a8ffd5;
+	--color-secondary-200: #52ffab;
+	--color-secondary-300: #00ff84;
+	--color-secondary-400: #00a857;
+	--color-secondary-500: #00522b;
+	--color-secondary-600: #004222;
+	--color-secondary-700: #00331a;
+	--color-secondary-800: #001f10;
+	--color-secondary-900: #000f08;
 
-  --color-darkpurple-50: #ededf2;
-  --color-darkpurple-100: #dbdbe6;
-  --color-darkpurple-200: #b7b7cd;
-  --color-darkpurple-300: #9393b4;
-  --color-darkpurple-400: #6f6f9b;
-  --color-darkpurple-500: #545479;
-  --color-darkpurple-600: #434360;
-  --color-darkpurple-700: #323248;
-  --color-darkpurple-800: #212130;
-  --color-darkpurple-900: #111118;
+	--color-darkpurple-50: #ededf2;
+	--color-darkpurple-100: #dbdbe6;
+	--color-darkpurple-200: #b7b7cd;
+	--color-darkpurple-300: #9393b4;
+	--color-darkpurple-400: #6f6f9b;
+	--color-darkpurple-500: #545479;
+	--color-darkpurple-600: #434360;
+	--color-darkpurple-700: #323248;
+	--color-darkpurple-800: #212130;
+	--color-darkpurple-900: #111118;
 }
 
 /*
@@ -51,77 +51,78 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
 @utility text-input {
-  @apply focus:border-primary-500 focus:outline-hidden focus:ring-primary-500;
-  @apply w-full rounded-md dark:bg-darkpurple-600;
+	@apply focus:border-primary-500 focus:outline-hidden focus:ring-primary-500;
+	@apply w-full rounded-md dark:bg-darkpurple-600;
 }
 
 @utility select-input {
-  @apply focus:border-primary-500 focus:outline-hidden focus:ring-primary-500;
-  @apply rounded-md dark:bg-darkpurple-600 dark:placeholder:text-darkpurple-300;
+	@apply focus:border-primary-500 focus:outline-hidden focus:ring-primary-500;
+	@apply rounded-md dark:bg-darkpurple-600 dark:placeholder:text-darkpurple-300;
 }
 
 @layer base {
-  /* inter var - latin */
-  @font-face {
-    font-family: "Catamaran";
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: optional;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
-  .cursor-newtab {
-    cursor: url("/newtab-cursor.png") 10 10, pointer;
-  }
+	/* inter var - latin */
+	@font-face {
+		font-family: "Catamaran";
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: optional;
+		unicode-range:
+			U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+			U+2215, U+FEFF, U+FFFD;
+	}
+	.cursor-newtab {
+		cursor: url("/newtab-cursor.png") 10 10, pointer;
+	}
 
-  /* #region  /**=========== Typography =========== */
-  h1 {
-    @apply font-primary text-2xl font-bold md:text-4xl;
-  }
+	/* #region  /**=========== Typography =========== */
+	h1 {
+		@apply font-primary text-2xl font-bold md:text-4xl;
+	}
 
-  h2 {
-    @apply font-primary text-xl font-bold md:text-3xl;
-  }
+	h2 {
+		@apply font-primary text-xl font-bold md:text-3xl;
+	}
 
-  h3 {
-    @apply font-primary text-lg font-bold md:text-2xl;
-  }
+	h3 {
+		@apply font-primary text-lg font-bold md:text-2xl;
+	}
 
-  h4 {
-    @apply font-primary text-base font-bold md:text-lg;
-  }
+	h4 {
+		@apply font-primary text-base font-bold md:text-lg;
+	}
 
-  body {
-    @apply font-primary text-sm md:text-base;
-  }
+	body {
+		@apply font-primary text-sm md:text-base;
+	}
 
-  .layout-container {
-    @apply mx-auto max-w-3xl px-2 pt-20 md:px-1;
-  }
+	.layout-container {
+		@apply mx-auto max-w-3xl px-2 pt-20 md:px-1;
+	}
 
-  .link-underline {
-    color: inherit;
-    @apply underline decoration-dotted underline-offset-2 hover:no-underline;
-    @apply transition duration-100 ease-out;
-    @apply hover:rounded-md hover:bg-primary-200 dark:hover:bg-primary-700;
-  }
+	.link-underline {
+		color: inherit;
+		@apply underline decoration-dotted underline-offset-2 hover:no-underline;
+		@apply transition duration-100 ease-out;
+		@apply hover:rounded-md hover:bg-primary-200 dark:hover:bg-primary-700;
+	}
 }
 
 @layer utilities {
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    @apply h-4 w-4 appearance-none rounded-full bg-darkpurple-300 dark:bg-darkpurple-100;
-    @apply shadow-[-405px_0px_0px_400px] shadow-darkpurple-300 dark:shadow-[-405px_0px_0px_400px] dark:shadow-darkpurple-100;
-  }
+	input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		@apply h-4 w-4 appearance-none rounded-full bg-darkpurple-300 dark:bg-darkpurple-100;
+		@apply shadow-[-405px_0px_0px_400px] shadow-darkpurple-300 dark:shadow-[-405px_0px_0px_400px] dark:shadow-darkpurple-100;
+	}
 }
