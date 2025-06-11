@@ -1,11 +1,16 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-	reactStrictMode: true,
-	output: "standalone",
-	images: {
-		domains: ["assets.vercel.com"],
-	},
-	eslint: {
-		dirs: ["src"],
-	},
+  reactStrictMode: true,
+  output: "standalone",
+  	images: {
+  		remotePatterns: [
+  			{
+  				protocol: 'https',
+  				hostname: 'assets.vercel.com',
+  			},
+  		],
+  	},
+  eslint: {
+    dirs: ["src"],
+  },
 };
