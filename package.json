@@ -15,7 +15,7 @@
     "release": "standard-version",
     "start": "node .next/standalone/server.js",
     "sst:dev": "sst dev",
-    "sst:deploy": "sst deploy --stage production",
+    "sst:deploy": "npx @opennextjs/aws@latest build && sst deploy --stage production",
     "test": "jest",
     "test:ci": "jest --ci --collect-coverage --verbose",
     "typescript:ci": "tsc --noEmit",
