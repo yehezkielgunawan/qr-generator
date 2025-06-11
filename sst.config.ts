@@ -11,7 +11,7 @@ export default $config({
   },
   async run() {
     new sst.aws.Nextjs("MyWeb", {
-      buildCommand: "npm run build:production",
+      buildCommand: "echo 'Build already completed'",
     });
   },
 });
