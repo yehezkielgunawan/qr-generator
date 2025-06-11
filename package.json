@@ -3,19 +3,21 @@
   "private": true,
   "version": "1.2.0",
   "scripts": {
-    "clean": "rm -rf .next coverage node_modules tsconfig.tsbuildinfo",
-    "dev": "next dev",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky",
-    "release": "standard-version",
-    "test": "jest",
     "biome:format": "biome format --write src/",
     "biome:lint": "biome lint --write src/",
     "biome:lint:ci": "biome lint src/",
-    "typescript:ci": "tsc --noEmit",
+    "build": "next build --turbopack",
+    "clean": "rm -rf .next coverage node_modules tsconfig.tsbuildinfo",
+    "dev": "next dev",
+    "lint": "next lint",
+    "prepare": "husky",
+    "release": "standard-version",
+    "start": "next start",
+    "sst:dev": "sst dev",
+    "sst:deploy": "sst deploy --stage production",
+    "test": "jest",
     "test:ci": "jest --ci --collect-coverage --verbose",
+    "typescript:ci": "tsc --noEmit",
     "up-latest": "pnpm up -i -L"
   },
   "dependencies": {
@@ -30,6 +32,7 @@
     "react-dom": "19.1.0",
     "react-icons": "5.5.0",
     "react-qrcode-logo": "3.0.0",
+    "sst": "3.17.4",
     "tailwind-merge": "3.2.0"
   },
   "devDependencies": {
