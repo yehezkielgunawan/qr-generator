@@ -14,8 +14,6 @@
     "prepare": "husky",
     "release": "standard-version",
     "start": "node .next/standalone/server.js",
-    "sst:dev": "sst dev",
-    "sst:deploy": "npx @opennextjs/aws@latest build && sst deploy --stage production",
     "test": "jest",
     "test:ci": "jest --ci --collect-coverage --verbose",
     "typescript:ci": "tsc --noEmit",
@@ -33,7 +31,6 @@
     "react-dom": "19.1.0",
     "react-icons": "5.5.0",
     "react-qrcode-logo": "3.0.0",
-    "sst": "3.17.4",
     "tailwind-merge": "3.3.1"
   },
   "devDependencies": {
