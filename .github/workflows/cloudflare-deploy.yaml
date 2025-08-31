@@ -1,0 +1,42 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install Deps (immutable)
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build for Cloudflare
+        run: pnpm cloudflare:deploy:ci
+        env:
+          NEXT_PUBLIC_REPO: ${{ secrets.NEXT_PUBLIC_REPO }}
+          NEXT_PUBLIC_REPO_ID: ${{ secrets.NEXT_PUBLIC_REPO_ID }}
+          NEXT_PUBLIC_CATEGORY_ID: ${{ secrets.NEXT_PUBLIC_CATEGORY_ID }}
+          UMAMI_ID: ${{ secrets.UMAMI_ID }}
+          UMAMI_URL: ${{ secrets.UMAMI_URL }}
+
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --name qr-generator
