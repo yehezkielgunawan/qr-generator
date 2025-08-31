@@ -2,6 +2,13 @@ name: Deploy to Cloudflare Workers
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to deploy"
+        required: true
+        type: choice
+        options:
+          - main
 
 jobs:
   deploy:
