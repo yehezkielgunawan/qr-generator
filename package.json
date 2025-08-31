@@ -17,10 +17,15 @@
     "test": "jest",
     "test:ci": "jest --ci --collect-coverage --verbose",
     "typescript:ci": "tsc --noEmit",
-    "up-latest": "pnpm up -i -L"
+    "up-latest": "pnpm up -i -L",
+    "cloudflare:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cloudflare:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cloudflare:deploy:ci": "CLOUDFLARE_BUILD=true pnpm exec opennextjs-cloudflare build",
+    "cloudflare:cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@fontsource/catamaran": "^5.2.6",
+    "@opennextjs/cloudflare": "^1.6.5",
     "@tailwindcss/forms": "0.5.10",
     "clsx": "^2.1.1",
     "html-to-image": "1.11.13",
@@ -53,7 +58,8 @@
     "lint-staged": "^16.1.0",
     "postcss": "8.5.4",
     "tailwindcss": "4.1.8",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "wrangler": "^4.33.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
